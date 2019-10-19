@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    android:background="#52C7E1FC"
+    android:background="#52FFFFFF"
     android:dividerPadding="8dp"
     android:orientation="vertical">
 
@@ -21,9 +21,12 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:background="#FDFDFD"
+        android:layout_gravity="center"
+        android:shadowColor="@color/colorAccent"
         android:drawableStart="@drawable/ic_delete_24dp"
         android:drawableLeft="@drawable/ic_delete_24dp"
         android:text="DELETE"

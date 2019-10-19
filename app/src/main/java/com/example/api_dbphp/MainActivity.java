@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.print.PrinterId;
+import android.util.Log;
+import android.view.View;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -17,6 +20,8 @@ import com.android.volley.toolbox.Volley;
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -60,6 +65,34 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         );
+        queue.add(stringRequest);
+    }
+
+    public void aksiTambah(View view) {
+        RequestQueue queue = Volley.newRequestQueue(this);
+        String url = "http://192.168.78.2/demo_api/tambahpgw.php";
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("responeapp", "Hasil"+response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> parameter = new HashMap<>();
+                parameter.put("name","Udin");
+                parameter.put("position","Programmer");
+                parameter.put("salary","7500");
+                return parameter;
+            }
+        };
         queue.add(stringRequest);
     }
 }
